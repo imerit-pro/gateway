@@ -33,7 +33,6 @@ composer require imerit-pro/gateway
 **مرحله ۲) - انتقال فایل های مورد نیاز**
 
 
-<div dir="rtl">
 برای لاراول ۶ به بعد :
 </div>
 
