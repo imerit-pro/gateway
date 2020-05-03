@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Larabookir\Gateway\PortAbstract;
-use Larabookir\Gateway\GatewayResolver;
-use Larabookir\Gateway\Enum;
+use Imerit\Gateway\PortAbstract;
+use Imerit\Gateway\GatewayResolver;
+use Imerit\Gateway\Enum;
 
 class CreateGatewayTransactionsTable extends Migration
 {

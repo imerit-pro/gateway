@@ -1,28 +1,15 @@
 <div dir="rtl">
 
-
-```
-متاسفانه این پکیج دیگر پشتیبانی نمی شود
-```
-
-پکیج اتصال به تمامی IPG ها و  بانک های ایرانی.
+پکیج اتصال به بانک سامان.
 
 این پکیج با ورژن های
-(  ۴ و ۵ و ۶  )
+(  6,7  )
  لاراول سازگار می باشد
 
 
 پشتیبانی تنها از درگاهای زیر می باشد:
- 1. MELLAT
- 2. SADAD (MELLI)
- 3. SAMAN
- 4. PARSIAN
- 5. PASARGAD
- 6. ZARINPAL
- 7. PAYPAL 
- 8. ASAN PARDAKHT 
- 9. PAY.IR ( برای فراخوانی از 'payir' استفاده نمایید)
- 10. Irankish (**جدید** -  برای فراخوانی از 'irankish' استفاده نمایید)
+ 1. SAMAN
+ 2. PAYPAL 
 ----------
 
 
@@ -37,49 +24,14 @@
 
 ```php
 
-composer require larabook/gateway
+composer require imerit-pro/gateway
 
 ```   
 
 <div dir="rtl">
- 
-**مرحله ۲)**
 
-    تغییرات زیر را در فایل  config/app.php اعمال نمایید:
+**مرحله ۲) - انتقال فایل های مورد نیاز**
 
-**توجه برای نسخه های لاراول ۶ به بعد  این مرحله نیاز به انجام نمی باشد** 
-
-</div>
-
-```php
-
-'providers' => [
-  ...
-  Larabookir\Gateway\GatewayServiceProvider::class, // <-- add this line at the end of provider array
-],
-
-
-'aliases' => [
-  ...
-  'Gateway' => Larabookir\Gateway\Gateway::class, // <-- add this line at the end of aliases array
-]
-
-```
-
-
-
-<div dir="rtl">
-
-**مرحله ۳) - انتقال فایل های مورد نیاز**
-
-برای لاراول ۵ :
-</div>
-
-```php
-
-php artisan vendor:publish --provider=Larabookir\Gateway\GatewayServiceProviderLaravel5
-
-```
 
 <div dir="rtl">
 برای لاراول ۶ به بعد :
@@ -95,7 +47,7 @@ php artisan vendor:publish
 
 <div dir="rtl"> 
 
-**مرحله ۴) - ایجاد جداول**
+**مرحله ۳) - ایجاد جداول**
 
 </div>
 
@@ -108,18 +60,18 @@ php artisan migrate
 
 <div dir="rtl"> 
  
-**مرحله ۵)**
+**مرحله ۴)**
 
 عملیات نصب پایان یافته است حال فایل gateway.php را در مسیر app/  باز نموده و  تنظیمات مربوط به درگاه بانکی مورد نظر خود را در آن وارد نمایید .
 
 حال میتوایند برای اتصال به api  بانک  از یکی از روش های زیر به انتخاب خودتان استفاده نمایید . (Facade , Service container):
 </div>
  
- 1. Gateway::make(new Mellat())
- 2. Gateway::make('mellat')
- 3. Gateway::mellat()
- 4. app('gateway')->make(new Mellat());
- 5. app('gateway')->mellat();
+ 1. Gateway::make(new Smana())
+ 2. Gateway::make('saman')
+ 3. Gateway::saman()
+ 4. app('gateway')->make(new Saman());
+ 5. app('gateway')->saman();
  
 <div dir="rtl">
 
@@ -135,7 +87,7 @@ php artisan migrate
 
 try {
 
-   $gateway = \Gateway::make('mellat');
+   $gateway = \Gateway::make('saman');
 
    $gateway->setCallback(url('/bank/response')); // You can also change the callback
    $gateway->price(1000)
@@ -179,7 +131,7 @@ try {
    // تراکنش با موفقیت سمت بانک تایید گردید
    // در این مرحله عملیات خرید کاربر را تکمیل میکنیم
 
-} catch (\Larabookir\Gateway\Exceptions\RetryException $e) {
+} catch (\Imerit\Gateway\Exceptions\RetryException $e) {
 
     // تراکنش قبلا سمت بانک تاییده شده است و
     // کاربر احتمالا صفحه را مجددا رفرش کرده است
@@ -205,8 +157,8 @@ try {
 
 
 درصورت بروز هر گونه 
- [باگ](https://github.com/larabook/gateway/issues) یا [خطا](https://github.com/larabook/gateway/issues)  .
+ [باگ](https://github.com/imeirt-pro/gateway/issues) یا [خطا](https://github.com/imeirt-pro/gateway/issues)  .
   ما را آگاه سازید .
   
-این پکیج از پکیج دیگری بنام  poolport  مشتق شده است اما برخی از عملیات آن متناسب با فریموورک لارول تغییر کرده است
+این پکیج از پکیج دیگری بنام  larabook/gateway  مشتق شده است 
 </div>
